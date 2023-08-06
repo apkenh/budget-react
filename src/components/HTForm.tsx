@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Checkbox, Form } from 'semantic-ui-react';
+import { Form } from 'semantic-ui-react';
 
 import HTButtonSaveOrCancel from './HTButtonSaveOrCancel';
+import HTEntryForm from './HTEntryForm';
 
 function HTForm(props: any) {
   const { onAddEntry } = props;
@@ -17,14 +18,7 @@ function HTForm(props: any) {
 
   return (
     <Form unstackable>
-      <Form.Group>
-        <Form.Input icon='tags' width={12} label='Description' placeholder='New shinny thing' value={desc} onChange={(e) => setDesc(e.target.value)} />
-        <Form.Input icon='dollar' iconPosition='left' width={4} label='Value' placeholder='100.00' value={amount} onChange={(e) => setAmount(Number(e.target.value))} />
-      </Form.Group>
-      <Form.Field>
-        <Checkbox label='Is expense' checked={expense} onChange={() => setExpense(!expense)} />
-      </Form.Field>
-
+      <HTEntryForm desc={desc} setDesc={setDesc} amount={amount} setAmount={setAmount} expense={expense} setExpense={setExpense} />
       <HTButtonSaveOrCancel onResetInput={onResetInput} onAddEntry={() => onAddEntry(desc, amount, expense)} />
     </Form>
   );
