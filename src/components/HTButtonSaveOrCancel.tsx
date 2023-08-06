@@ -1,11 +1,14 @@
 import { Button } from 'semantic-ui-react';
 
-function HTButtonSaveOrCancel() {
+function HTButtonSaveOrCancel(props: any) {
+  const { onResetInput, onAddEntry } = props;
   return (
     <Button.Group>
-      <Button>Cancel</Button>
+      <Button onClick={onResetInput}>Clear</Button>
       <Button.Or />
-      <Button primary>OK</Button>
+      <Button primary onClick={onAddEntry}>
+        Add
+      </Button>
     </Button.Group>
   );
 }
